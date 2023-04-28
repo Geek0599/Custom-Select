@@ -1,0 +1,282 @@
+@import url(https://fonts.googleapis.com/css?family=Open+Sans:300,regular,500,600,700,800,300italic,italic,500italic,600italic,700italic,800italic);
+
+$minWidth : 320px;
+$fontSize : 14px;
+$fontFamily: 'Open Sans';
+
+* {
+	padding: 0px;
+	margin: 0px;
+	border: 0px;
+}
+*,
+*:before,
+*:after {
+	-moz-box-sizing: border-box;
+	-webkit-box-sizing: border-box;
+	box-sizing: border-box;
+}
+:focus,
+:active {
+	// outline: none;
+}
+a:focus,
+a:active {
+	// outline: none;
+}
+aside,
+nav,
+footer,
+header,
+section {
+	display: block;
+}
+html {
+	font-size: #{$fontSize + px};
+}
+html,
+body {
+	height: 100%;
+	min-width: $minWidth;
+}
+body {
+	line-height: 1;
+	font-family: $fontFamily;
+	//text-rendering: optimizeLegibility;
+	-ms-text-size-adjust: 100%;
+	-moz-text-size-adjust: 100%;
+	-webkit-text-size-adjust: 100%;
+}
+input,
+button,
+textarea {
+	font-family: $fontFamily;
+	font-size: inherit;
+}
+input::-ms-clear {
+	display: none;
+}
+button {
+	cursor: pointer;
+	background-color: inherit;
+}
+button::-moz-focus-inner {
+	padding: 0;
+	border: 0;
+}
+a,
+a:visited {
+	text-decoration: none;
+}
+a:hover {
+	text-decoration: none;
+}
+ul li {
+	list-style: none;
+}
+img {
+	vertical-align: top;
+}
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+	font-weight: inherit;
+	font-size: inherit;
+}
+//-webkit-overflow-scrolling: touch;
+//animation-play-state: paused !important;
+
+main{
+	height: 100%;
+}
+.section{
+	height: 100%;
+	display: flex;	
+	justify-content: center;	
+	align-items: center;
+	gap: 10px;
+}
+.ones{
+	padding: 4px;
+	border: 1px solid #b7b7b7;
+}
+
+// Select ==================================
+select{
+	padding: 4px;
+	border: 1px solid #b7b7b7;
+	border-radius: 5px;
+}
+.select {
+	position: relative;
+	font-family: 'Open Sans';
+	// .select__item
+	&__item {
+		position: relative;
+	}
+	// .select__title
+	&__title {
+		color: #000;
+		border: 1px solid #d9d9d9;
+		background-color: #fff;
+		cursor: pointer;
+		min-width: 200px;
+		border-radius: 4px;
+		@media (max-width: 992px) {
+			font-size: 18px;
+		}
+		transition: border-radius 0.2s ease 0.2s, border-color 0.3s ease;
+		@media (any-hover: hover){
+			&:hover{
+				border-color: #732fbc;
+			}
+		}
+	}
+	// .select__value
+	&__value {
+		display: flex;
+		font-size: 14px;
+		line-height: 18px;
+		height: 30px;
+		padding: 0px 15px;
+		align-items: center;
+		justify-content: space-between;
+		flex-direction: row-reverse;
+		span {
+			padding-right: 5px;
+			overflow: hidden;
+			display: -webkit-box;
+			-webkit-line-clamp: 1;
+			-webkit-box-orient: vertical;
+		}
+		&:before {
+			content: "";
+			display: inline-block;
+			transition: all 0.3s ease 0s;
+			width: 11px;
+			height: 7px;
+			background: url("../img/chevron-select.svg") center / 100% no-repeat;
+		}
+	}
+	&__input {
+		width: 100%;
+		background-color: transparent;
+		height: 100%;
+	}
+	// .select__options
+	&__options {
+		&:not([data-simplebar]){
+			overflow-y: auto;
+		}
+		overflow-x: hidden;
+		color: #000;
+		position: absolute !important;
+		//max-height: 100px;
+		z-index: 1;
+		top: 32px;
+		border-radius: 0 0 4px 4px;
+		min-width: 100%;
+		left: 0;
+		background-color: #fff;
+		border-top: 0;
+		border: 1px solid #d9d9d9;
+		border-top: 0;
+		font-size: 14px;
+		padding: 10px 0px 5px 0px;
+		@media (max-width: 992px) {
+			font-size: 18px;
+		}
+	}
+	// .select__option
+	&__option {
+		cursor: pointer;
+		padding: 5px 15px;
+		margin: 0px 0px 0px 0px;
+		&._placeholder{
+			pointer-events: none;
+			font-size: 14px;
+			color: red;
+			background-color: none;
+			border-bottom: 1px solid #b7b7b7;
+			border-radius: 5px;
+		}
+		&.selected{
+			font-weight: 500;
+			background-color: #a09e9e;
+		}
+		&.is-hovered{
+			background-color: #b6effff7;
+			outline: 1px solid #000;
+		}
+		&.hide{
+			display: none;
+		}
+		@media (any-hover: hover){
+			&:not(.select__option.selected):hover{
+				background: #b6effff7;
+				outline: 1px solid #000;
+			}
+			&:hover{
+				&.is-hovered{
+					background-color: unset;
+					outline: none;
+				}
+			}
+		}
+	}
+	&__option-search{
+		width: calc(100% - 10px);
+		margin: 2px 5px 6px;
+		height: 30px;
+	}
+	.select-search{
+		position: relative;
+		&__input{
+		padding: 4px 28px 4px 4px;
+		outline: none;
+		width: 100%;
+		}
+		&__btn-clear{
+			&.show{
+				opacity: 1;
+				visibility: visible;
+				transform: translate3d(0, -50%, 0);
+			}
+			opacity: 0;
+			visibility: hidden;
+			transform: translate3d(10px, -50%, 0);
+			transition: all 0.3s ease 0s;
+			cursor: pointer;
+			border: none;
+			position: absolute;
+			right: 5px;
+			top: 50%;
+			width: 20px;
+			height: 20px;
+			background: url('../img/cross-icon.png') center/15px no-repeat;
+		}
+	}
+	&._active {
+		z-index: 5;
+		.select__title{
+			transition: border-radius 0.3s ease 0s;
+			border-radius: 4px 4px 0 0;
+			border-color: #732fbc;
+		}
+		.select__value {
+			&:before {
+				transform: rotate(-180deg);
+			}
+		}
+		.select__options {
+			border-color: #732fbc;
+			display: block;
+			border-top: 1px solid #b7b7b7;
+		}
+	}
+}
+
+
